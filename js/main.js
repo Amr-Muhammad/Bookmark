@@ -1,14 +1,14 @@
 var siteNameInput = document.getElementById("siteNameInput");
 var siteUrlInput = document.getElementById("siteUrlInput");
-var websiteArray = []
-var deletebtns = []
-
 var siteNameDiv = document.getElementById("siteNameDiv")
 var siteUrlDiv = document.getElementById("siteUrlDiv")
 var layerDiv = document.getElementById("layerDiv")
 var submitBtn = document.getElementById("submit")
 var okBtn = document.getElementById("okBtn")
 var opacityDiv = document.getElementById("opacityDiv")
+
+var websiteArray = []
+var deletebtns = []
 
 siteNameDiv.style.display = "none"
 siteUrlDiv.style.display = "none"
@@ -18,6 +18,7 @@ if (localStorage.getItem("website") != null) {
     display();
     eventHandler();
 }
+
 
 submitBtn.addEventListener("click", function () {
     submit()
@@ -72,22 +73,18 @@ function submit() {
 
     else if (siteNameInput.value == "") {
         siteNameDiv.style.display = "block"
-        siteNameInput.classList.add("border-danger", "border-3")
-        siteNameInput.classList.remove("mb-5")
+        siteNameInput.classList.replace("mb-5", "border-danger")
     }
 
     else if (siteUrlInput.value == "") {
         siteUrlDiv.style.display = "block"
-        siteUrlInput.classList.add("border-danger", "border-3")
-        siteUrlInput.classList.remove("mb-5")
+        siteUrlInput.classList.replace("mb-5", "border-danger")
     }
 
     else {
         siteNameDiv.style.display = "none"
         siteUrlDiv.style.display = "none"
-        siteNameInput.classList.remove("border-danger", "border-3")
         siteNameInput.classList.add("mb-5")
-        siteUrlInput.classList.remove("border-danger", "border-3")
         siteUrlInput.classList.add("mb-5")
     }
 
@@ -95,7 +92,7 @@ function submit() {
 
     if (checkSiteUrl() == true && checkSiteName() == true) {
 
-
+        //check if the url or site name has been added before or not
         for (var counter = 0; counter < websiteArray.length; counter++) {
             if ((siteNameInput.value.toLowerCase() == websiteArray[counter].name) || (siteUrlInput.value.toLowerCase() == websiteArray[counter].url)) {
 
@@ -106,6 +103,7 @@ function submit() {
             }
         }
 
+        //if url and site name are new
         if (flag == 0) {
 
             var website = {
@@ -207,6 +205,7 @@ function checkSiteUrl() {
         return false;
     }
 }
+
 
 function showLayerDiv() {
     layerDiv.classList.replace("hide", "show");
