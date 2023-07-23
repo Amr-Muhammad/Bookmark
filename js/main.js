@@ -10,8 +10,6 @@ var opacityDiv = document.getElementById("opacityDiv")
 var websiteArray = []
 var deletebtns = []
 
-siteNameDiv.style.display = "none"
-siteUrlDiv.style.display = "none"
 
 if (localStorage.getItem("website") != null) {
     websiteArray = JSON.parse(localStorage.getItem("website"))
@@ -33,31 +31,29 @@ okBtn.addEventListener("click", function () {
 
 siteNameInput.addEventListener("keyup", function () {
     if (checkSiteName() != true) {
-        siteNameDiv.style.display = "block"
+        siteNameDiv.classList.add("show")
         siteNameInput.classList.add("is-invalid")
-        siteNameInput.classList.remove("mb-5")
 
     }
 
     else {
-        siteNameDiv.style.display = "none"
+        siteNameDiv.classList.remove("show")
         siteNameInput.classList.remove("is-invalid")
-        siteNameInput.classList.add("mb-5", "is-valid")
+        siteNameInput.classList.add("is-valid")
     }
 })
 
 
 siteUrlInput.addEventListener("keyup", function () {
     if (checkSiteUrl() != true) {
-        siteUrlDiv.style.display = "block"
+        siteUrlDiv.classList.add("show")
         siteUrlInput.classList.add("is-invalid")
-        siteUrlInput.classList.remove("mb-5")
     }
 
     else {
-        siteUrlDiv.style.display = "none"
+        siteUrlDiv.classList.remove("show")
         siteUrlInput.classList.remove("is-invalid")
-        siteUrlInput.classList.add("mb-5", "is-valid")
+        siteUrlInput.classList.add("is-valid")
     }
 })
 
@@ -65,27 +61,20 @@ siteUrlInput.addEventListener("keyup", function () {
 function submit() {
 
     if (siteNameInput.value == "" && siteUrlInput.value == "") {
-        siteNameDiv.style.display = "block"
-        siteUrlDiv.style.display = "block"
-        siteNameInput.classList.remove("mb-5")
-        siteUrlInput.classList.remove("mb-5")
+        siteNameDiv.classList.add("show")
+        siteNameInput.classList.add("is-invalid")
+        siteUrlDiv.classList.add("show")
+        siteUrlInput.classList.add("is-invalid")
     }
 
     else if (siteNameInput.value == "") {
-        siteNameDiv.style.display = "block"
-        siteNameInput.classList.replace("mb-5", "border-danger")
+        siteNameDiv.classList.add("show")
+        siteNameInput.classList.add("is-invalid")
     }
 
     else if (siteUrlInput.value == "") {
-        siteUrlDiv.style.display = "block"
-        siteUrlInput.classList.replace("mb-5", "border-danger")
-    }
-
-    else {
-        siteNameDiv.style.display = "none"
-        siteUrlDiv.style.display = "none"
-        siteNameInput.classList.add("mb-5")
-        siteUrlInput.classList.add("mb-5")
+        siteUrlDiv.classList.add("show")
+        siteUrlInput.classList.add("is-invalid")
     }
 
     var flag = 0
