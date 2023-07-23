@@ -94,7 +94,7 @@ function submit() {
 
         //check if the url or site name has been added before or not
         for (var counter = 0; counter < websiteArray.length; counter++) {
-            if ((siteNameInput.value.toLowerCase() == websiteArray[counter].name) || (siteUrlInput.value.toLowerCase() == websiteArray[counter].url)) {
+            if ((siteNameInput.value.toLowerCase() == websiteArray[counter].name.toLowerCase()) || (siteUrlInput.value.toLowerCase() == websiteArray[counter].url.toLowerCase())) {
 
                 showLayerDiv()
 
@@ -107,8 +107,8 @@ function submit() {
         if (flag == 0) {
 
             var website = {
-                name: siteNameInput.value.toLowerCase(),
-                url: siteUrlInput.value.toLowerCase(),
+                name: siteNameInput.value,
+                url: siteUrlInput.value,
             }
 
             websiteArray.push(website)
