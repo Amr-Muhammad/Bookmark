@@ -197,7 +197,7 @@ function checkSiteName() {
 
 
 function checkSiteUrl() {
-    var regexUrl = /^(https|HTTPS|http|HTTP):\/\/(www\.|WWW\.)[-a-zA-Z0-9@:%._\\+~#?&//=]{2,256}$/
+    var regexUrl = /^(https|HTTPS|http|HTTP):\/\/(www\.|WWW\.)?[-a-zA-Z0-9@:%._\\+~#?&//=]{2,256}$/
     if (regexUrl.test(siteUrlInput.value)) {
         return true;
     }
